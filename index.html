@@ -21,6 +21,7 @@
             overflow-x: hidden;
         }
 
+        /* Container for content to be in front of particles */
         .container {
             flex: 1;
             display: flex;
@@ -31,9 +32,10 @@
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
-            z-index: 1;
+            z-index: 2; /* Ensure the container stays above particles */
         }
 
+        /* Name style with gradient */
         .name-highlight {
             font-size: clamp(3rem, 10vw, 8rem);
             font-weight: 800;
@@ -44,16 +46,19 @@
             -webkit-background-clip: text;
             color: transparent;
             position: relative;
-            opacity: 0;
+            opacity: 1; /* Ensure name is fully visible */
             animation: fadeIn 1s ease forwards 0.5s;
+            z-index: 3; /* Ensure name is above particles */
             cursor: pointer;
             transition: transform 0.3s ease;
         }
 
+        /* Hover effect for name */
         .name-highlight:hover {
             transform: scale(1.05);
         }
 
+        /* Subtitle styling */
         .subtitle {
             font-size: clamp(1.2rem, 3vw, 1.8rem);
             text-align: center;
@@ -61,8 +66,10 @@
             color: #64ffda;
             opacity: 0;
             animation: fadeIn 1s ease forwards 0.8s;
+            z-index: 3;
         }
 
+        /* Tagline styling */
         .tagline {
             font-size: clamp(1rem, 3vw, 1.5rem);
             text-align: center;
@@ -71,8 +78,10 @@
             color: #8892b0;
             opacity: 0;
             animation: fadeIn 1s ease forwards 1s;
+            z-index: 3;
         }
 
+        /* Social links section */
         .social-links {
             display: flex;
             gap: 2rem;
@@ -106,6 +115,7 @@
             height: 28px;
         }
 
+        /* Particles container: Behind all content */
         .particles-container {
             position: absolute;
             top: 0;
@@ -113,7 +123,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 0;
+            z-index: -1; /* Particles behind all content */
         }
 
         footer {
@@ -210,24 +220,33 @@
         // Set current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // Background particles animation with optimized performance
         class Particle {
             constructor(canvas) {
                 this.canvas = canvas;
                 this.ctx = canvas.getContext('2d');
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.5 + 0.5; // Slightly smaller particles for better performance
-                this.speedX = Math.random() * 0.5 - 0.25; // Slower movement for smoother animation
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
                 this.speedY = Math.random() * 0.5 - 0.25;
                 this.color = `rgba(100, 255, 218, ${Math.random() * 0.4})`;
             }
 
-            update() {
+            update(mouseX, mouseY) {
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                // Add gravity effect and adjust speed based on mouse distance
+                if (distance < 100) {
+                    this.speedX += dx * 0.05;
+                    this.speedY += dy * 0.05;
+                }
+
+                // Add randomness to keep the particles floating naturally
                 this.x += this.speedX;
                 this.y += this.speedY;
 
-                // Wrap around the screen
                 if (this.x > this.canvas.width) {
                     this.x = 0;
                 } else if (this.x < 0) {
@@ -249,6 +268,14 @@
             }
         }
 
+        let mouseX = 0;
+        let mouseY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.x;
+            mouseY = e.y;
+        });
+
         function initParticles() {
             const canvas = document.createElement('canvas');
             canvas.width = window.innerWidth;
@@ -258,7 +285,6 @@
             const ctx = canvas.getContext('2d');
             const particlesArray = [];
             
-            // Reduce particle count for better performance
             const particleCount = Math.min(70, Math.floor(window.innerWidth * window.innerHeight / 12000));
             
             for (let i = 0; i < particleCount; i++) {
@@ -268,22 +294,19 @@
             let animationFrameId;
             let lastTime = 0;
             
-            // Use throttled animation with time-based updates
             function animate(timestamp) {
                 const deltaTime = timestamp - lastTime;
                 
-                // Only update every 30ms for better performance
                 if (deltaTime > 30 || !lastTime) {
                     lastTime = timestamp;
                     
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     
                     for (let i = 0; i < particlesArray.length; i++) {
-                        particlesArray[i].update();
+                        particlesArray[i].update(mouseX, mouseY);
                         particlesArray[i].draw();
                     }
                     
-                    // Connect particles with lines, but be more selective
                     connectParticles(particlesArray, ctx);
                 }
                 
@@ -292,7 +315,6 @@
             
             animate(0);
             
-            // Handle window resize more efficiently
             let resizeTimeout;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimeout);
@@ -306,7 +328,6 @@
         }
         
         function connectParticles(particles, ctx) {
-            // Only connect particles that are relatively close
             const maxDistance = 120;
             
             for (let i = 0; i < particles.length; i++) {
@@ -327,8 +348,7 @@
                 }
             }
         }
-        
-        // Initialize particles on page load
+
         window.addEventListener('load', initParticles);
     </script>
 </body>
