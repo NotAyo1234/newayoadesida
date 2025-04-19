@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayo Adesida | Content Creator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: #0a192f;
+            color: #ccd6f6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .name-highlight {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+            background: linear-gradient(90deg, #64ffda, #a78bfa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.5s;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .name-highlight:hover {
+            transform: scale(1.05);
+        }
+
+        .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #64ffda;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.8s;
+        }
+
+        .tagline {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            text-align: center;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            color: #8892b0;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 1s;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 1.5s;
+        }
+
+        .social-link {
+            color: #8892b0;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .social-link span {
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .social-link:hover {
+            color: #64ffda;
+            transform: translateY(-5px);
+        }
+
+        .social-link svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: #8892b0;
+            font-size: 0.9rem;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 2s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .social-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles-container" id="particles"></div>
+    
+    <div class="container">
+        <h1 class="name-highlight floating">Ayo Adesida</h1>
+        <h2 class="subtitle">Content Creator & Aspiring Corporate Professional</h2>
+        <p class="tagline">Building a digital presence while pursuing professional excellence</p>
+        
+        <div class="social-links">
+            <a href="#" class="social-link" title="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
+                <span>YouTube</span>
+            </a>
+            <a href="#" class="social-link" title="TikTok">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
+                    <path d="M22 8.134v-.11a7.19 7.19 0 0 1-4-4H14v12a4 4 0 1 1-4-4c.22 0 .44.02.65.05V8.03A7.84 7.84 0 0 0 9 8a8 8 0 0 0-8 8 8 8 0 0 0 16 0V8.134z"></path>
+                </svg>
+                <span>TikTok</span>
+            </a>
+            <a href="#" class="social-link" title="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>Instagram</span>
+            </a>
+            <a href="#" class="social-link" title="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                <span>LinkedIn</span>
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        &copy; <span id="current-year">2025</span> Ayo Adesida. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Background particles animation with optimized performance
+        class Particle {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5; // Slightly smaller particles for better performance
+                this.speedX = Math.random() * 0.5 - 0.25; // Slower movement for smoother animation
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.color = `rgba(100, 255, 218, ${Math.random() * 0.4})`;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                // Wrap around the screen
+                if (this.x > this.canvas.width) {
+                    this.x = 0;
+                } else if (this.x < 0) {
+                    this.x = this.canvas.width;
+                }
+
+                if (this.y > this.canvas.height) {
+                    this.y = 0;
+                } else if (this.y < 0) {
+                    this.y = this.canvas.height;
+                }
+            }
+
+            draw() {
+                this.ctx.fillStyle = this.color;
+                this.ctx.beginPath();
+                this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                this.ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            const canvas = document.createElement('canvas');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            document.getElementById('particles').appendChild(canvas);
+            
+            const ctx = canvas.getContext('2d');
+            const particlesArray = [];
+            
+            // Reduce particle count for better performance
+            const particleCount = Math.min(70, Math.floor(window.innerWidth * window.innerHeight / 12000));
+            
+            for (let i = 0; i < particleCount; i++) {
+                particlesArray.push(new Particle(canvas));
+            }
+            
+            let animationFrameId;
+            let lastTime = 0;
+            
+            // Use throttled animation with time-based updates
+            function animate(timestamp) {
+                const deltaTime = timestamp - lastTime;
+                
+                // Only update every 30ms for better performance
+                if (deltaTime > 30 || !lastTime) {
+                    lastTime = timestamp;
+                    
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    
+                    for (let i = 0; i < particlesArray.length; i++) {
+                        particlesArray[i].update();
+                        particlesArray[i].draw();
+                    }
+                    
+                    // Connect particles with lines, but be more selective
+                    connectParticles(particlesArray, ctx);
+                }
+                
+                animationFrameId = requestAnimationFrame(animate);
+            }
+            
+            animate(0);
+            
+            // Handle window resize more efficiently
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    cancelAnimationFrame(animationFrameId);
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                    animate(0);
+                }, 200);
+            });
+        }
+        
+        function connectParticles(particles, ctx) {
+            // Only connect particles that are relatively close
+            const maxDistance = 120;
+            
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < maxDistance) {
+                        const opacity = 0.08 * (1 - distance / maxDistance);
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(100, 255, 218, ${opacity})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        
+        // Initialize particles on page load
+        window.addEventListener('load', initParticles);
+    </script>
+</body>
+</html>
