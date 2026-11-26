@@ -31,29 +31,23 @@ p{margin:0}
 .lift{transition:transform .25s ease,box-shadow .25s ease}.lift:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(23,19,15,.12)}
 .btn{transition:transform .2s ease}.btn:hover{transform:translateY(-2px)}
 .zoom{overflow:hidden}.zoom img{transition:transform .6s ease}.zoom:hover img{transform:scale(1.03)}
-.hero-copy{position:absolute;top:110px;right:max(32px,calc((100% - 1200px)/2 + 32px));width:min(480px,42%);box-sizing:border-box;padding:36px;border-radius:28px}
-.hc-frosted{background:rgba(251,247,242,.5);backdrop-filter:blur(18px) saturate(1.15);-webkit-backdrop-filter:blur(18px) saturate(1.15);border:1px solid rgba(255,255,255,.55);box-shadow:0 20px 50px rgba(23,19,15,.12)}
-.hc-tint{background:rgba(251,247,242,.72);box-shadow:0 20px 50px rgba(23,19,15,.10)}
-.hc-solid{background:#FBF7F2;box-shadow:0 20px 50px rgba(23,19,15,.18)}
-@media (max-width:860px){.hero-copy{position:static!important;width:auto!important;padding:40px 24px 8px!important;background:none!important;box-shadow:none!important;border:none!important;backdrop-filter:none!important;border-radius:0!important}.hero-img{height:420px!important}}
+.hero{min-height:calc(100vh - 62px)}
+@media (max-width:860px){.hero-photo{min-height:440px!important}.hero-photo img{object-position:center 72%!important}}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 6px))}}
 .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .mq-left{animation:mq 60s linear infinite}.mq-right{animation:mq 60s linear infinite reverse}.marquee:hover .marquee-track{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){.rise,.pulse,.marquee-track{animation:none}.marquee{overflow-x:auto}.lift,.btn,.zoom img{transition:none}}
 </style>
 
-<style>@media (min-width:900px){body{zoom:.86}}@media (max-width:640px){.navlinks a:not(.btn){display:none}}html{scroll-behavior:smooth}*{box-sizing:border-box}img{max-width:100%}</style>
+<style>@media (min-width:900px){body{zoom:.86}.hero{min-height:calc(100vh / .86 - 62px)}}@media (max-width:640px){.navlinks a:not(.btn){display:none}}html{scroll-behavior:smooth}*{box-sizing:border-box}img{max-width:100%}</style>
 </head>
 <body>
 
 <div style="font-family: Inter, sans-serif; color: #17130F; background: #FBF7F2; width: 100%">
 
 <!-- HERO -->
-
-
-<!-- NOW STRIP -->
-<section id="top" style="position: relative; background: #FBF7F2">
-  <header style="position: absolute; top: 0; left: 0; right: 0; z-index: 2">
+<section id="top" class="hero" style="background: #FBF7F2; display: flex; flex-direction: column">
+  <header style="position: relative; z-index: 2">
     <div style="max-width: 1200px; margin: 0 auto; padding: 24px 32px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between">
       <a href="#top" style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; text-decoration: none; background: #FBF7F2; padding: 6px 14px; border-radius: 999px">ayo<span style="color: #FF6B35">.</span></a>
       <nav class="navlinks" style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 15px; font-weight: 500; background: #FBF7F2; padding: 6px; border-radius: 999px">
@@ -65,21 +59,28 @@ p{margin:0}
       </nav>
     </div>
   </header>
-  <img class="hero-img" src="stage.jpg" alt="Ayo, in an ACS Sponsorships and Careers hoodie, speaking to a packed lecture theatre" style="width: 100%; height: 820px; object-fit: cover; object-position: center 35%; display: block">
-  <div class="hero-copy hc-frosted" style="display: flex; flex-direction: column; gap: 22px">
+  <div style="flex: 1; width: 100%; max-width: 1200px; margin: 0 auto; padding: 8px 32px 36px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 48px; align-items: stretch">
+    <div class="hero-text" style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 22px">
     <div class="rise" style="display: flex; flex-wrap: wrap; gap: 8px; animation-delay: .1s">
       <span style="border: 1.5px solid #17130F; border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 600">Student</span>
       <span style="border: 1.5px solid #17130F; border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 600">Creator</span>
       <span style="border: 1.5px solid #17130F; border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 600">Founder</span>
     </div>
-    <h1 class="rise" style="font-size: clamp(56px, 6.4vw, 92px); line-height: 0.92; letter-spacing: -0.045em; font-weight: 700; animation-delay: .2s">Ayo<br><span style="color: #FF6B35">Adesida.</span></h1>
+    <h1 class="rise" style="font-size: clamp(60px, 8vw, 116px); line-height: 0.92; letter-spacing: -0.045em; font-weight: 700; animation-delay: .2s">Ayo<br><span style="color: #FF6B35">Adesida.</span></h1>
     <p class="rise" style="font-size: 18px; line-height: 1.55; color: #2A241F; animation-delay: .35s">10M+ views, with one video hitting 1.75M. Experience at 20+ organisations, from Goldman Sachs and Google to the United Nations. Interned at NYU in New York City. Still a student.</p>
     <div class="rise" style="display: flex; flex-wrap: wrap; gap: 10px; animation-delay: .5s">
       <a href="mailto:ayoadesida1@gmail.com" class="btn" style="background: #17130F; color: #FBF7F2; padding: 15px 26px; border-radius: 999px; font-weight: 600; text-decoration: none; font-size: 16px">Let's talk</a>
       <a href="#content" class="btn" style="background: #FBF7F2; border: 1.5px solid #17130F; padding: 15px 26px; border-radius: 999px; font-weight: 600; text-decoration: none; font-size: 16px">Watch my content</a>
     </div>
+    </div>
+    <div class="hero-photo" style="flex: 1 1 360px; min-width: 0; min-height: 520px; border-radius: 28px; overflow: hidden; position: relative; background: #E6DED4">
+      <img src="stage.jpg" alt="Ayo, in an ACS Sponsorships and Careers hoodie, facing a packed lecture theatre" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block">
+    </div>
   </div>
-</section><section style="border-bottom: 1.5px solid #E6DED4">
+</section>
+
+<!-- NOW STRIP -->
+<section style="border-bottom: 1.5px solid #E6DED4">
   <div style="max-width: 1200px; margin: 0 auto; padding: 20px 32px; display: flex; flex-wrap: wrap; gap: 10px 32px; align-items: center; justify-content: center; text-align: center; font-size: 15px">
     <span style="display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px"><span class="pulse" style="width: 10px; height: 10px; border-radius: 999px; background: #FF6B35; display: inline-block"></span>Right now</span>
     <span>CS with AI at Nottingham</span>
